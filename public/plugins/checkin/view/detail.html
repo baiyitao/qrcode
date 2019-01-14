@@ -1,0 +1,50 @@
+
+<!doctype html>
+<html>
+<head>
+    <include file="public/head"/>
+    <title>ThinkCMF插件演示首页</title>
+    <meta name="description" content="ThinkCMF插件演示首页">
+    <meta name="keywords" content="ThinkCMF插件演示首页">
+</head>
+<body>
+
+<div class="well well-warning" style="display: inline-block;  width: 30%;">
+    {$meeting}
+
+    <br>
+    详情 和 二维码
+
+
+</div>
+
+<div class="well well-warning" style="display: inline-block;">
+    <form method="post" class="js-ajax-form" action="#">
+        <div class="table_list">
+            <table width="100%" class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th>签到人</th>
+                    <th>签到人ID</th>
+                    <th>时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <foreach name="obj" item="obj">
+                    <tr>
+                        <td>{$obj.user}</td>
+                        <td>{$obj.userId}</td>
+                        <td>{$obj.time}</td>
+                    </tr>
+                </foreach>
+                </tbody>
+            </table>
+        </div>
+    </form>
+
+
+</div>
+
+
+</body>
+</html>

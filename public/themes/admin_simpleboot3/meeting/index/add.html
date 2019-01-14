@@ -1,0 +1,181 @@
+<html class=" js no-mobile desktop no-ie chrome chrome70 portal-section admin_article-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch retina fontface w-700 gt-240 gt-320 gt-480 gt-640 lt-768 lt-800 lt-1024 lt-1280 lt-1440 lt-1680 lt-1920 no-portrait landscape" id="add-page"><head>
+    <meta charset="utf-8">
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- HTML5 shim for IE8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
+
+
+    <link href="/themes/admin_simpleboot3/public/assets/themes/flatadmin/bootstrap.min.css" rel="stylesheet">
+    <link href="/themes/admin_simpleboot3/public/assets/simpleboot3/css/simplebootadmin.css" rel="stylesheet">
+    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        form .input-order {
+            margin-bottom: 0px;
+            padding: 0 2px;
+            width: 42px;
+            font-size: 12px;
+        }
+
+        form .input-order:focus {
+            outline: none;
+        }
+
+        .table-actions {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding: 0px;
+        }
+
+        .table-list {
+            margin-bottom: 0px;
+        }
+
+        .form-required {
+            color: red;
+        }
+    </style>
+    <script type="text/javascript">
+        //全局变量
+        var GV = {
+            ROOT: "/",
+            WEB_ROOT: "/",
+            JS_ROOT: "static/js/",
+            APP: 'portal'/*当前应用名*/
+        };
+    </script><style type="text/css" abt="234"></style>
+    <script src="/themes/admin_simpleboot3/public/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="/static/js/wind.js"></script>
+    <script src="/themes/admin_simpleboot3/public/assets/js/bootstrap.min.js"></script>
+    <script>
+        Wind.css('artDialog');
+        Wind.css('layer');
+        $(function () {
+            $("[data-toggle='tooltip']").tooltip({
+                container:'body',
+                html:true,
+            });
+            $("li.dropdown").hover(function () {
+                $(this).addClass("open");
+            }, function () {
+                $(this).removeClass("open");
+            });
+        });
+    </script><link rel="stylesheet" href="/static/js/artDialog/skins/default.css?v="><link rel="stylesheet" href="/static/js/layer/skin/default/layer.css?v=">
+    <style>
+        #think_page_trace_open {
+            z-index: 9999;
+        }
+    </style>
+    <style type="text/css">
+        .pic-list li {
+            margin-bottom: 5px;
+        }
+    </style>
+
+    <script type="text/html" id="files-item-tpl">
+        <li id="saved-file{id}">
+            <input id="file-{id}" type="hidden" name="file_urls[]" value="{filepath}">
+            <input class="form-control" id="file-{id}-name" type="text" name="file_names[]" value="{name}"
+                   style="width: 200px;" title="文件名称">
+            <a id="file-{id}-preview" href="{preview_url}" target="_blank">下载</a>
+            <a href="javascript:uploadOne('文件上传','#file-{id}','file');">替换</a>
+            <a href="javascript:(function(){$('#saved-file{id}').remove();})();">移除</a>
+        </li>
+    </script>
+
+    <body >
+
+<div class="wrap js-check-wrap">
+    <form action="{:url('Index/addPost')}" method="post" class="form-horizontal js-ajax-form margin-top-20">
+        <div class="row">
+            <div class="col-md-9">
+                <table class="table table-bordered">
+                    <tr>
+                        <th width="100">会议名<span class="form-required">*</span></th>
+                        <td>
+                            <input class="form-control" type="text" name="post[name]"
+                                   id="title" required value="" placeholder="请输入会议名"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th><b>会议时间</b></th>
+                        <td>
+                            <input class="form-control js-bootstrap-datetime" type="text" name="post[date]"
+                                   value="{:date('Y-m-d H:i:s',time())}">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>地点<span class="form-required">*</span></th>
+                        <td>
+                            <input class="form-control" type="text" name="post[location]"
+                                   id="meeting-location" required value="" placeholder="请输入会议地点"/>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <th>会议概括<span class="form-required">*</span></th>
+                        <td>
+                            <input class="form-control" type="text" name="post[info]"
+                                   id="meeting-info" required value="" placeholder="请输入会议概括"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>详细内容</th>
+                        <td>
+                            <script type="text/plain" id="content" name="post[detail]"></script>
+                        </td>
+                    </tr>
+
+
+                </table>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary js-ajax-submit">{:lang('ADD')}</button>
+                        <a class="btn btn-default" href="{:url('Index/index')}">{:lang('BACK')}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" src="/static/js/admin.js"></script>
+<script type="text/javascript">
+    //编辑器路径定义
+    var editorURL = GV.WEB_ROOT;
+</script>
+<script type="text/javascript" src="/static/js/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="/static/js/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        editorcontent = new baidu.editor.ui.Editor();
+        editorcontent.render('content');
+        try {
+            editorcontent.sync();
+        } catch (err) {
+        }
+
+        $('.btn-cancel-thumbnail').click(function () {
+            $('#thumbnail-preview').attr('src', '/themes/admin_simpleboot3/public/assets/images/default-thumbnail.png');
+            $('#thumbnail').val('');
+        });
+
+    });
+
+</script>
+</body>

@@ -1,0 +1,99 @@
+<include file="public@header"/>
+
+    <link href="__TMPL__/public/assets/css/slippry/slippry.css" rel="stylesheet">
+    <style>
+        .caption-wraper {
+            position: absolute;
+            left: 50%;
+            bottom: 2em;
+        }
+
+        .caption-wraper .caption {
+            position: relative;
+            left: -50%;
+            background-color: rgba(0, 0, 0, 0.54);
+            padding: 0.4em 1em;
+            color: #fff;
+            -webkit-border-radius: 1.2em;
+            -moz-border-radius: 1.2em;
+            -ms-border-radius: 1.2em;
+            -o-border-radius: 1.2em;
+            border-radius: 1.2em;
+        }
+
+        .tc-gridbox {
+            margin: 0;
+        }
+
+        @media (max-width: 767px) {
+            .caption-wraper {
+                left: 0;
+                bottom: 0.4em;
+            }
+
+            .caption-wraper .caption {
+                left: 0;
+                padding: 0.2em 0.4em;
+                font-size: 0.92em;
+                -webkit-border-radius: 0;
+                -moz-border-radius: 0;
+                -ms-border-radius: 0;
+                -o-border-radius: 0;
+                border-radius: 0;
+            }
+        }
+
+        body{
+            padding: 0;
+            margin: 20px;
+        }
+
+    </style>
+
+</head>
+<body class="body-white">
+<div class="well well-warning" style="display: inline-block;">
+
+    <!--  Ver2  下次开发 带上创建人的id，关联部门   -->
+    <a href="{:url('meeting/index/add')}">添加会议</a>
+
+</div>
+
+<br>
+<div class="well well-warning" style="display: inline-block;">
+    <form method="post" class="js-ajax-form" action="#">
+        <div class="table_list">
+            <table width="100%" class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th width="50">ID</th>
+                    <th>会议名</th>
+                    <th>日期</th>
+                    <th>地点</th>
+                    <th>概括</th>
+                    <th width="160">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <foreach name="meeting" item="meeting">
+                    <tr>
+                        <td>{$meeting.Id}</td>
+                        <td>{$meeting.name}</td>
+                        <td>{$meeting.date}</td>
+                        <td>{$meeting.location}</td>
+                        <td>{$meeting.info}</td>
+                        <td>
+                            <a href="{:url('meeting/index/detail',array('id'=>$meeting.Id))}">详情</a>|
+                            <a >修改</a>|
+                            <a >删除</a>
+                        </td>
+                    </tr>
+                </foreach>
+                </tbody>
+            </table>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

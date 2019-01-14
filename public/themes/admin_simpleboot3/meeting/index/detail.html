@@ -1,0 +1,56 @@
+<include file="public@header"/>
+
+
+</head>
+<body style="margin: 20px;">
+<a href="{:url('meeting/index/index')}">返回</a>
+<div class="well well-warning" style="display: flex;">
+
+    <div id="article_content">
+        详情 :{$meeting.detail}
+    </div>
+    <br>
+    <hr>
+    <div class="">
+        二维码(暂定使用：id  {$meeting.Id})
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://localhost/meeting/qrcode/checkin/id/{$meeting.Id}"/>
+    </div>
+
+
+</div>
+
+{$obj}
+
+<br>
+<div class="well well-warning" style="display: inline-block;">
+    <form method="post" class="js-ajax-form" action="#">
+        <div class="table_list">
+            <table width="100%" class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th>签到人</th>
+                    <th>签到人ID</th>
+                    <th>时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <foreach name="obj" item="data">
+                    <tr>
+                        <td>{$data.user}</td>
+                        <td>{$data.userId}</td>
+                        <td>{$data.time}</td>
+                    </tr>
+                </foreach>
+                </tbody>
+            </table>
+        </div>
+    </form>
+    <a href="{:url('meeting/index/download',array('id'=>$id))}">下载</a>
+
+
+
+</div>
+
+
+</body>
+

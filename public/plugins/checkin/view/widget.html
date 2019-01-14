@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <title>ThinkCMF插件演示首页</title>
+
+</head>
+<body>
+<div class="well well-warning" style="display: inline-block;">
+        <form method="post" class="js-ajax-form" action="#">
+        <div class="table_list">
+            <table width="100%" class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th width="50">ID</th>
+                    <th>会议名</th>
+                    <th>日期</th>
+                    <th>类别</th>
+                    <th>地点</th>
+                    <th>概括</th>
+                    <th width="160">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <foreach name="meeting" item="meeting">
+                    <tr>
+                        <td>{$meeting.Id}</td>
+                        <td>{$meeting.name}</td>
+                        <td>{$meeting.date}</td>
+                        <td>{$meeting.category}</td>
+                        <td>{$meeting.location}</td>
+                        <td>{$meeting.info}</td>
+                        <td>
+                            <a href="{:cmf_plugin_url('Checkin://Index/detail',array('id'=>$meeting.Id))}">详情</a>|
+                            <a href="{:cmf_plugin_url('Checkin://Index/update')}">修改</a>|
+                            <a href="{:cmf_plugin_url('Checkin://Index/delete')}" class="js-ajax-delete">删除</a>
+                        </td>
+                    </tr>
+                </foreach>
+                </tbody>
+            </table>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
